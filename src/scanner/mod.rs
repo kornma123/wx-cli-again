@@ -62,8 +62,7 @@ pub fn scan_keys_with_options(db_dir: &Path, opts: ScanOptions<'_>) -> Result<Ve
     }
     #[cfg(target_os = "windows")]
     {
-        let _ = opts;
-        return windows::scan_keys(db_dir);
+        return windows::scan_keys_with_options(db_dir, opts.hook_seconds, opts.known);
     }
     #[cfg(not(any(target_os = "macos", target_os = "linux", target_os = "windows")))]
     {
