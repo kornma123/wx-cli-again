@@ -9,6 +9,10 @@ mod macos;
 #[cfg(target_os = "windows")]
 mod windows;
 
+/// 供 attachment/image_key 等模块复用「工作集最大的主进程」选择
+#[cfg(target_os = "windows")]
+pub(crate) use windows::find_wechat_pid;
+
 /// 扫描到的一条密钥记录
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct KeyEntry {

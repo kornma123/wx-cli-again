@@ -90,7 +90,7 @@ pub fn scan_keys_with_options(
 ///
 /// 微信是多进程架构（主进程 + 渲染/插件子进程同名 Weixin.exe），
 /// 密钥材料在主进程堆中，故枚举所有同名进程并取工作集最大者。
-fn find_wechat_pid() -> Option<u32> {
+pub(crate) fn find_wechat_pid() -> Option<u32> {
     // SAFETY: CreateToolhelp32Snapshot 标准 Windows API
     let snap = unsafe { CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0).ok()? };
 
